@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      #buttons {
+        color: #fffdfd;
+        text-align: center;
+        background-color: #000000;
+        width: 100px;
+        height: 50px;
+        font-size: 20px;
+        border: solid 2px #f4efef;
+      }
+
+      #buttons:hover {
+        background-color: #3b3737;
+      }
+
+      #calculator {
+        background-color: #000000;
+      }
+
+      #expression {
+        background-color: grey;
+        border: solid 2px #f4efef;
+        width: 412px;
+        height: 50px;
+        text-align: left;
+        font-size: 30px;
+      }
+
+      #result {
+        background-color: grey;
+        border: solid 2px #f4efef;
+        width: 412px;
+        height: 50px;
+        text-align: left;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body style="background-color: black">
+    <center>
+      <form method="POST">
+        <input
+          type="text"
+          id="expression"
+          name="expression"
+          value="{{ expression }}"
+        />
+        <br />
+        <input
+          type="text"
+          id="result"
+          name="result"
+          value="{{ result }}"
+          readonly
+        />
+        <br />
+        <input
+          type="button"
+          id="buttons"
+          value="1"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="2"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="3"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="+"
+          onclick="updateExpression(this.value)"
+        />
+        <br />
+        <input
+          type="button"
+          id="buttons"
+          value="4"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="5"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="6"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="-"
+          onclick="updateExpression(this.value)"
+        />
+        <br />
+        <input
+          type="button"
+          id="buttons"
+          value="7"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="8"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="9"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="*"
+          onclick="updateExpression(this.value)"
+        />
+        <br />
+        <input
+          type="button"
+          id="buttons"
+          value="0"
+          onclick="updateExpression(this.value)"
+        />
+
+        <input
+          type="button"
+          id="buttons"
+          value="sin"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="cos"
+          onclick="updateExpression(this.value)"
+        />
+
+        <input
+          type="button"
+          id="buttons"
+          value="/"
+          onclick="updateExpression(this.value)"
+        />
+
+        <br />
+
+        <input
+          type="button"
+          id="buttons"
+          value="tan"
+          onclick="updateExpression(this.value)"
+        />
+
+        <input
+          type="button"
+          id="buttons"
+          value="."
+          onclick="updateExpression(this.value)"
+        />
+
+        <input
+          type="button"
+          id="buttons"
+          value="C"
+          onclick="clearExpression()"
+        />
+        <input type="submit" id="buttons" name="cal" value="=" />
+
+        <br />
+        <input
+          type="button"
+          id="buttons"
+          value="^"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="("
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value=")"
+          onclick="updateExpression(this.value)"
+        />
+
+        <input type="button" id="buttons" value="del" onclick="del()" />
+        <br />
+        <input
+          type="button"
+          id="buttons"
+          value="sqrt"
+          onclick="updateExpression(this.value)"
+        />
+        <input
+          type="button"
+          id="buttons"
+          value="{{result}}"
+          onclick="updateExpression(this.value)"
+        />
+      </form>
+    </center>
+
+    <script>
+      function del() {
+        var string = document.getElementById("expression").value;
+        string = string.substring(0, string.length - 1);
+        document.getElementById("expression").value = string;
+      }
+
+      function updateExpression(value) {
+        var current = document.getElementById("expression").value;
+        if (value == "sin") {
+          value = "sin(";
+        } else if (value == "cos") {
+          value = "cos(";
+        } else if (value == "tan") {
+          value = "tan(";
+        } else if (value == "sqrt") {
+          value = "sqrt(";
+        } else if (value == "^") {
+          value = "**(";
+        }
+
+        document.getElementById("expression").value = current + value;
+      }
+      function clearExpression() {
+        var display = document.getElementById("expression");
+        display.value = "";
+      }
+    </script>
+  </body>
+</html>
